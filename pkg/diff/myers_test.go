@@ -249,6 +249,6 @@ func BenchmarkApplyOps_1KB(b *testing.B) {
 
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
-		ApplyOps(old, result.Ops)
+		_, _ = ApplyOps(old, result.Ops)
 	}
 }

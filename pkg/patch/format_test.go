@@ -258,7 +258,7 @@ func BenchmarkEncodeDecode_1KB(b *testing.B) {
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		var buf bytes.Buffer
-		Encode(&buf, p)
-		Decode(&buf)
+		_ = Encode(&buf, p)
+		_, _ = Decode(&buf)
 	}
 }
