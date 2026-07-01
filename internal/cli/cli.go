@@ -110,7 +110,7 @@ func cmdDiff(args []string) error {
 	if err != nil {
 		return fmt.Errorf("create patch file: %w", err)
 	}
-	defer f.Close()
+	defer func() { _ = f.Close() }()
 
 	if err := patch.Encode(f, p); err != nil {
 		return fmt.Errorf("encode patch: %w", err)

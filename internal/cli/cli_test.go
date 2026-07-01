@@ -165,6 +165,6 @@ func TestRun_DefaultOutput(t *testing.T) {
 		// Check if it was created somewhere
 		t.Log("Default output created in current directory")
 	} else {
-		os.Remove("other.bp") // cleanup
+		_ = os.Remove("other.bp") // cleanup
 	}
 }
