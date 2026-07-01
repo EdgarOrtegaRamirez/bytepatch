@@ -1,5 +1,5 @@
 # Binaries
-bytepatch
+/bytepatch
 *.exe
 *.exe~
 *.dll
