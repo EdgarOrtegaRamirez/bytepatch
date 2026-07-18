@@ -37,9 +37,9 @@ const (
 type OpCode byte
 
 const (
-	OpCopy OpCode = iota // Copy bytes from old file at offset
-	OpInsert             // Insert new bytes
-	OpSkip               // Skip bytes in old file (advance offset without output)
+	OpCopy   OpCode = iota // Copy bytes from old file at offset
+	OpInsert               // Insert new bytes
+	OpSkip                 // Skip bytes in old file (advance offset without output)
 )
 
 // Instruction represents a single patch instruction.
@@ -125,7 +125,7 @@ func writeInstruction(w io.Writer, inst *Instruction) error {
 	// For OpInsert: data follows
 
 	length := inst.Length
- opcodeByte := byte(inst.Op) << 6
+	opcodeByte := byte(inst.Op) << 6
 
 	if length < 0x3F {
 		opcodeByte |= byte(length)

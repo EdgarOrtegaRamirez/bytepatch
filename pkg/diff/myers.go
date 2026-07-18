@@ -6,16 +6,16 @@
 package diff
 
 import (
+	"fmt"
 	"hash"
 	"hash/fnv"
-	"fmt"
 )
 
 // OpType represents the type of edit operation.
 type OpType int
 
 const (
-	OpEqual  OpType = iota
+	OpEqual OpType = iota
 	OpInsert
 	OpDelete
 )
@@ -241,10 +241,10 @@ type match struct {
 // chunkFile splits a file into content-defined chunks using Rabin fingerprint.
 func chunkFile(data []byte) []chunkInfo {
 	const (
-		minChunk = 256         // Minimum chunk size
-		maxChunk = 8192        // Maximum chunk size
-		mask     = 0x1FFF      // 13-bit mask: average chunk ~8KB
-		windowSize = 48        // Rabin fingerprint window
+		minChunk   = 256    // Minimum chunk size
+		maxChunk   = 8192   // Maximum chunk size
+		mask       = 0x1FFF // 13-bit mask: average chunk ~8KB
+		windowSize = 48     // Rabin fingerprint window
 	)
 
 	if len(data) == 0 {
